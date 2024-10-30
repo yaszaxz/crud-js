@@ -1,11 +1,13 @@
-const {Sequelize} = require('sequelize')
+// a configuração do nosso banco mysql
+// utilizando o sequelize
+const { Sequelize } = require('sequelize')
 
-class Database{
-    constructor(){
+class Database {
+    constructor() {
         this.init()
     }
-    
-    init(){
+
+    init() {
         this.db = new Sequelize({
             database: 'exemplo',
             host: 'localhost',
