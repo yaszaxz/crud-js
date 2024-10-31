@@ -5,8 +5,8 @@ const controllerPessoa = require('../controllers/pessoa')
 const router = express.Router()
 
 // Criando as rotas
-router.get('/', controllerPessoa.GetPessoas)
-router.post('/', controllerPessoa.CreatePessoa)
+router.get('/listar', controllerPessoa.GetPessoas)
+router.post('/criar', controllerPessoa.CreatePessoa)
 router.put('/:id', controllerPessoa.UpdatePessoa)
 router.delete('/:id', controllerPessoa.DeletePessoa)
 

@@ -1,6 +1,5 @@
 const ServicePessoa = require('../services/pessoa')
 
-// Criando a classe controller da Pessoa
 class ControllerPessoa {
     async GetPessoas(req, res) {
         try {
@@ -10,20 +9,23 @@ class ControllerPessoa {
             res.status(500).send({ msg: error.message })
         }
     }
-    CreatePessoa(req,res){
+    async CreatePessoa(req,res){
         try {
-            const name = req.body.name
-            const pessoa = ServicePessoa.CreatePessoa(name)
+            const{name, password, email} = req.body
+
+            const pessoa = await ServicePessoa.CreatePessoa(name, password, email)
             res.send({ msg: pessoa })
         } catch (error) {
             res.status(500).send({ msg: error.message })
         }
     }
-    UpdatePessoa(req,res){
+    async UpdatePessoa(req,res){
         try {
             const id = req.params.id
             const name = req.body.name
-            const pessoa = ServicePessoa.UpdatePessoa(id, name)
+            const password = req.body.password
+            const email = req.body.email
+            const pessoa = await ServicePessoa.UpdatePessoa(id, name, password, email)
             res.send({ msg: pessoa })
         } catch (error) {
             res.status(500).send({ msg: error.message })
